@@ -4,8 +4,8 @@ var displayed_page = 0;
 
 var display = function() {
   var img = document.getElementById("page");
+  img.onload = function() { magnify(2); };
   img.src = images + ("0000" + displayed_page).slice(-4) + image_extension;
-  magnify(2);
 }
 
 var search = function(event) {
@@ -56,7 +56,6 @@ var magnify = function(zoom) {
   var glass = document.getElementById("magnifier-glass");
   glass.style.display = "inline";
   glass.style.backgroundImage = "url('" + img.src + "')";
-  glass.style.backgroundRepeat = "no-repeat";
   glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
   var w = glass.offsetWidth / 2;
   var h = glass.offsetHeight / 2;
