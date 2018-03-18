@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Scanned Dictionary Browser</title>
+        <link rel="stylesheet" href="scripts/dictionary.css" />
+        <script src="scripts/base.js"></script>
+        <script src="scripts/dictionary.js"></script>
+    </head>
+    <body onload="init()">
+        <div id="sidebar">
+            <div id="logo"></div>
+            <div id="title">Language - Language</div>
+            <div id="dictionary">Dictionary data</div>
+            <input type="search" id="search" placeholder="Search..." onkeypress="search(event)"
+                   autofocus="true" autocomplete="off" />
+            <p>Usage:</p>
+            <ul>
+                <li>Type a word and press return to search</li>
+                <li>Click the page for a magnifying glass</li>
+                <li>Click again to hide it</li>
+                <li>Click the arrows for the previous/next page</li>
+            </ul>
+            <div id="footer">&copy; 2018 by Peter Salvi</div>
+        </div>
+        <table id="main">
+            <tr>
+                <td><input id="prev" type="image" src="img/prev.png" onclick="prevPage()" /></td>
+                <td>
+                    <div id="magnifier">
+                        <div id="magnifier-glass"></div>
+                        <img id="page" draggable="false" />
+                    </div>
+                </td>
+                <td><input id="next" type="image" src="img/next.png" onclick="nextPage()" /></td>
+            </tr>
+        </div>
+    </body>
+</html>
