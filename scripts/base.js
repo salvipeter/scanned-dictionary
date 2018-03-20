@@ -4,7 +4,7 @@ var displayed_page = 0;
 
 var display = function() {
   var img = document.getElementById("page");
-  img.onload = function() { magnify(2); };
+  img.onload = function() { magnify(page_zoom); };
   img.src = images + ("0000" + displayed_page).slice(-4) + image_extension;
 }
 
@@ -44,6 +44,16 @@ var nextPage = function() {
     ++displayed_page;
     display();
   }
+};
+
+// Consistency check of the supplied headwords
+var checkData = function() {
+  var result = "";
+  for (var i = 1; i < headwords.length; ++i)
+    if (wordCompare(headwords[i-1], headwords[i]) == "greater")
+      result += headwords[i-1] + " / " + headwords[i] + '\n';
+  if (result != "")
+    alert("Problems:\n" + result);
 };
 
 // Magnifier based on: https://www.w3schools.com/howto/howto_js_image_magnifier_glass.asp
