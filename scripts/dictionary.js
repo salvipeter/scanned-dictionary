@@ -34,7 +34,7 @@ var wordCompare = function(a, b) {
         result += "ं";
         ++i;
       }
-      else if (word[i] == '-')
+      else if (word[i] == '़' || word[i] == '-')
         continue;
       else {
         var j = hindi["complex"].indexOf(word[i]);
