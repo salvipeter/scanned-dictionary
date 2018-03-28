@@ -14,7 +14,7 @@ var wordCompare = function(a, b) {
   var canonicalForm = function(word) {
     var result = "";
     for (var i = 0; i < word.length; ++i) {
-      if (word[i] == 'أ')
+      if ("أإؤئ".indexOf(word[i]) >= 0 || (i == 0 && word[i] == "ا"))
         result += 'ء';
       else if (word[i] == 'ى')
         result += 'ي';
