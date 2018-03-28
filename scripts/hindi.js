@@ -108,6 +108,7 @@ var page_zoom = 2;
 // Dictionary pages
 var images = "data/hindidic-";
 var image_extension = ".png";
+var start_page = 0;
 var headwords = [               // first words in each page
 "अंक",
 "अँकुसी",
