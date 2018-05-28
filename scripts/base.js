@@ -103,6 +103,7 @@ var magnify = function(zoom) {
     if (display_lens) {
       glass.style.display = "inline";
       moveMagnifier(e);
+      document.getElementById("search").focus();
     } else {
       glass.style.display = "none";
       document.getElementById("search").focus();
