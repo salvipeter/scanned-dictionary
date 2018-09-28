@@ -6,7 +6,7 @@ var display = function() {
   var img = document.getElementById("page");
   img.onload = function() { magnify(page_zoom); };
   img.src = images + ("0000" + (start_page + displayed_page)).slice(-4) + image_extension;
-}
+};
 
 var search = function(event) {
   if (event.keyCode == 13) {
