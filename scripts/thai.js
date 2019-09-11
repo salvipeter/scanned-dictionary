@@ -9,6 +9,7 @@ var init = function() {
 };
 
 // Returns "less" when a < b, "equal" when a = b, "greater" when a > b.
+// Algorithm based on:
 // Samphan Khamthaidee, Thai Style Algorithm: Sorting Thai,
 // Computer Review, Vol. 91 (March 1992), Man Group, Bangkok, 1992.
 var wordCompare = function(a, b) {
@@ -17,6 +18,11 @@ var wordCompare = function(a, b) {
   };
   var isstone = function(c) {
     return "ๆ◌็◌่◌้◌๊◌๋◌์".indexOf(c) >= 0;
+  };
+  var diff = function(c1, c2) {
+    var alphabet =
+        "กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤลฦวศษสหฬอฮฯะ◌ัาำ◌ิ◌ี◌ึ◌ื◌ุ◌ู◌ฺเแโใไๅๆ◌็◌่◌้◌๊◌๋◌์◌ํ◌๎";
+    return alphabet.indexOf(c1) - alphabet.indexOf(c2);
   };
   var stringify = function(d) {
     if (d < 0)
@@ -30,14 +36,7 @@ var wordCompare = function(a, b) {
   var i1 = 0;
   var i2 = 0;
   while (true) {
-    while (a[i1] == b[i2]) {
-      if (i1 == a.length) {
-        if (i2 == b.length)
-          return "equal";
-        return "less";
-      }
-      if (i2 == b.length)
-        return "greater";
+    while (a[i1] == b[i2] && i1 != a.length) {
       i1++; i2++;
     }
     var c1 = a[i1];
@@ -45,7 +44,7 @@ var wordCompare = function(a, b) {
     if (isstone(c1) && isstone(c2)) {
       i1++; i2++;
       if (d == 0)
-        d = c1 - c2;
+        d = diff(c1, c2);
     } else if (isstone(c1)) {
       i1++;
       if (d == 0)
@@ -58,14 +57,19 @@ var wordCompare = function(a, b) {
       break;
   }
 
+  if (i1 == a.length && i2 == b.length)
+    return stringify(d);
+  if (i1 == a.length || i2 == b.length)
+    return stringify(diff(c1, c2));
+
   if (isldvowel(c1) && isldvowel(c2)) {
-    return stringify(a[i1+1] != b[i2+1] ? b[i2+1] - a[i1+1] : c1 - c2);
+    return stringify(a[i1+1] != b[i2+1] ? b[i2+1] - a[i1+1] : diff(c1, c2));
   } else if (isldvowel(c1)) {
-    return stringify(a[i1+1] != c2 ? a[i1+1] - c2 : 1);
+    return stringify(a[i1+1] != c2 ? diff(a[i1+1], c2) : 1);
   } else if (isldvowel(c2)) {
-    return stringify(c1 != b[i2+1] ? c1 - b[i2+1] : -1);
+    return stringify(c1 != b[i2+1] ? diff(c1, b[i2+1]) : -1);
   } else
-    return stringify(c1 - c2);
+    return stringify(diff(c1, c2));
 };
 
 var page_zoom = 2;
@@ -97,6 +101,7 @@ var headwords = [               // first words in each page
   "กวน",
   "กวี",
   "ก่อง",
+  "ก้อน",
   "กะโผลกกะเผลก",
   "กัด",
   "กัน",
@@ -124,5 +129,5 @@ var headwords = [               // first words in each page
   "ขนาด",
   "ขยั้นขยอ",
   "ขวนขวาย"
-  // 80
+  // 80 (50)
 ];
