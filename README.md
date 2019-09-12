@@ -4,7 +4,7 @@ This is a webpage that shows a given page of a scanned dictionary.
 
 ## Usage ##
 
-A Hindi dictionary setup is included, as an example. You need to:
+You need to:
 
 - supply images of the dictionary pages
 - write a configuration script, such as `scripts/hindi.js`, such that it
@@ -12,3 +12,15 @@ A Hindi dictionary setup is included, as an example. You need to:
     - implements a function that compares two words in the dictionary's language
     - contains a list of every page's first word
 - change `index.html` to refer to your script
+
+## Examples ##
+
+- R.S. McGregor's Oxford Hindi-English Dictionary
+- Hans Wehr's Arabic-English Dictionary
+- Mary Haas' Thai-English Dictionary
+
+Note that you still need the scanned data, this project only contains the index.
+
+## Mobile/Tablet-friendly version ##
+
+Use `mobile.html` instead of `index.html` (experimental).
