@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Scanned Dictionary Browser</title>
+        <link rel="stylesheet" href="scripts/dictionary.css" />
+        <script src="scripts/base.js"></script>
+        <script src="scripts/hindi.js"></script> <!-- change this line -->
+    </head>
+    <body onload="init()">
+      <div id="top">
+        <input id="prev" type="image" src="img/prev.png" onclick="prevPage()" />
+        <input type="search" id="search" placeholder="Search..." onkeypress="search(event)"
+               autofocus="true" autocomplete="off" />
+        <input id="next" type="image" src="img/next.png" onclick="nextPage()" />
+      </div>
+      <div id="bottom">
+        <img id="page" />
+      </div>
+      <div id="not-used">
+        <div id="logo"></div>
+        <div id="title">Language - Language</div>
+        <div id="dictionary">Dictionary data</div>
+      </div>
+    </body>
+</html>
