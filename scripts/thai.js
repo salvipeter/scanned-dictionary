@@ -12,6 +12,7 @@ var init = function() {
 // Algorithm based on:
 // Samphan Khamthaidee, Thai Style Algorithm: Sorting Thai,
 // Computer Review, Vol. 91 (March 1992), Man Group, Bangkok, 1992.
+// Source: https://linux.thai.net/~thep/tsort.html
 var wordCompare = function(a, b) {
   var isldvowel = function(c) {
     return "เแโใไ".indexOf(c) >= 0;
@@ -32,6 +33,11 @@ var wordCompare = function(a, b) {
     return "equal";
   }
 
+  // The first for  loop compares consequence characters,  skipping tonal marks,
+  // until different effective characters (i.e. consonants or vowels) are found,
+  // or until either  or both strings are  exhausted. Meanwhile, first-appearing
+  // difference in  tonal marks  is also kept  for later use  in case  all other
+  // parts are equal.
   var d = 0;
   var i1 = 0;
   var i2 = 0;
@@ -57,13 +63,24 @@ var wordCompare = function(a, b) {
       break;
   }
 
+  // The next if statement returns the  difference in tonal marks when all other
+  // parts appears equal.
   if (i1 == a.length && i2 == b.length)
     return stringify(d);
-  if (i1 == a.length || i2 == b.length)
-    return stringify(diff(c1, c2));
 
+  // The next  if statement detects  whether a string  is a substring,  if tonal
+  // marks are  ignored, of the  other and returns the  difference if it  is the
+  // case.
+  if (i1 == a.length)
+    return "less";
+  if (i2 == b.length)
+    return "greater";
+
+  // The last  if blocks  compares the  difference for  most general  cases. The
+  // following  initial  consonant  will  be  picked to  compare  first  if  the
+  // character in question is a leading vowel.
   if (isldvowel(c1) && isldvowel(c2)) {
-    return stringify(a[i1+1] != b[i2+1] ? b[i2+1] - a[i1+1] : diff(c1, c2));
+    return stringify(a[i1+1] != b[i2+1] ? diff(a[i1+1], b[i2+1]) : diff(c1, c2));
   } else if (isldvowel(c1)) {
     return stringify(a[i1+1] != c2 ? diff(a[i1+1], c2) : 1);
   } else if (isldvowel(c2)) {
