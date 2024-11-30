@@ -5,7 +5,7 @@
         <title>Scanned Dictionary Browser</title>
         <link rel="stylesheet" href="scripts/dictionary.css" />
         <script src="scripts/base.js"></script>
-        <script src="scripts/thai.js"></script> <!-- change this line -->
+        <script src="scripts/persian.js"></script> <!-- change this line -->
     </head>
     <body onload="init()">
         <div id="sidebar">
@@ -25,14 +25,14 @@
         </div>
         <table id="main">
             <tr>
-                <td><input id="prev" type="image" src="img/prev.png" onclick="prevPage()" /></td>
+                <td><input id="prev" type="image" src="img/prev.png" onclick="nextPage()" /></td>
                 <td>
                     <div id="magnifier">
                         <div id="magnifier-glass"></div>
                         <img id="page" draggable="false" />
                     </div>
                 </td>
-                <td><input id="next" type="image" src="img/next.png" onclick="nextPage()" /></td>
+                <td><input id="next" type="image" src="img/next.png" onclick="prevPage()" /></td>
             </tr>
         </div>
     </body>
