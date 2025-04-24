@@ -18,6 +18,7 @@ You need to:
 - R.S. McGregor's Oxford Hindi-English Dictionary
 - Hans Wehr's Arabic-English Dictionary
 - Mary Haas' Thai-English Dictionary
+- Aryanpur Concise Persian-English dictionary
 
 Note that you still need the scanned data, this project only contains the index.
 
